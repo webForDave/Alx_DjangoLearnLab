@@ -1,3 +1,4 @@
-my_book.delete()
+from booksehlf.model import Book
 
-this deletes the instance of the book model
+my_book = Book.objects.get(title="1984")
+my_book.delete()
