@@ -3,6 +3,6 @@ from .models import Book
 
 class CustomUserAdmin(admin.ModelAdmin):
     list_display = ("title", "author", "publication_year",)
-    list_filter = ("title",)
+    search_fields = ("title",)
 
 admin.site.register(Book, CustomUserAdmin)
