@@ -1,3 +1,9 @@
 from django.contrib import admin
+from .models import Book
+from django.contrib.auth.admin import UserAdmin
 
-# Register your models here.
+class CustomUserAdmin(UserAdmin):
+    list_display = ("title", "author", "publication_year",)
+    list_filter = ("title",)
+
+admin.site.register(Book, CustomUserAdmin)
