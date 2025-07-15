@@ -2,7 +2,8 @@ from relationship_app.models import Author, Book, Library, Librarian
 
 def main():
     library_name = "City Library"
-    author = Author.objects.get(name='author_name')
+    author_name='John Doe'
+    author = Author.objects.get(name=author_name)
     books_by_author = Book.objects.filter(author=author)
     print("Books by John Doe:")
     for book in books_by_author:
