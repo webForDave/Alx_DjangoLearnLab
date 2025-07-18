@@ -6,20 +6,9 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth.views import LoginView as DjangoLoginView
 
-# def login_view(request):
-#     form = AuthenticationForm()
-
-#     if request.method == "POST":
-#         form = AuthenticationForm(data=request.POST)
-#         if form.is_valid():
-#             user = form.get_user()
-#             login(request, user)
-#             return redirect("list_books")
-
-#     return render(request, "relationship_app/login.html", {"form": form})
-
-class LoginView(LoginView):
+class CustomLoginView(DjangoLoginView):
     template_name = "relationship_app/login.html"
 
 def logout_view(request):
