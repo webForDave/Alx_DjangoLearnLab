@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Author(models.Model):
     name = models.CharField(max_length=50)
@@ -17,4 +18,13 @@ class Library(models.Model):
 class Librarian(models.Model):
     name = models.CharField(max_length=50)
     library = models.OneToOneField(Library, on_delete=models.CASCADE)
+
+class UserProfile(models.Model):
+    role_choices = [
+        ("Admin", "Admin"),
+        ("Librarian", "Librarian"),
+        ("Member", "Member"),
+    ]
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    role = models.CharField(max_length=15, choices=role_choices, default='Member')
 
