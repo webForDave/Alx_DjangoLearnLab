@@ -1,12 +1,13 @@
 from django.urls import path
 from django.contrib.auth.views import LoginView, LogoutView
 from . import views, admin_view, librarian_view, member_view
+from .views import list_books
 
 urlpatterns = [
     path("register/", views.register, name="register"),
     path("login/", LoginView.as_view(template_name="relationship_app/login.html"), name="login"),
     path("logout/", LogoutView.as_view(template_name="relationship_app/logout.html"), name="logout"),
-    path("books/", views.list_books, name="list_books"),
+    path("books/", list_books, name="list_books"),
     path("books/<int:pk>/", views.LibraryDetailView.as_view(), name="Book detail"),
     path('admin-dashboard/', admin_view.admin_dashboard, name='admin_dashboard'),
     path('librarian-dashboard/', librarian_view.librarian_dashboard, name='librarian_dashboard'),
